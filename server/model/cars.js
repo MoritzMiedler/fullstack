@@ -25,10 +25,10 @@ async function deleteCar(id) {
 
 async function getOwnerId(owner) {
   try {
-    const { rows } = await db.query('select id from owner where first_name = $1 and last_name = $2', [
-      owner.firstName,
-      owner.lastName,
-    ]);
+    const { rows } = await db.query(
+      'select id from owner where first_name = $1 and last_name = $2',
+      [owner.firstName, owner.lastName],
+    );
     return rows[0].id;
   } catch (err) {
     return null;

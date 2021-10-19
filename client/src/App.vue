@@ -1,21 +1,35 @@
 <template>
   <v-app>
     <LogoBar></LogoBar>
-    <v-main>
-      <CarCards></CarCards>
-    </v-main>
+
+    <div>
+      <router-view :cars="cardata"></router-view>
+    </div>
   </v-app>
 </template>
 
 <script>
-import CarCards from '@/views/CarCards.vue';
-import LogoBar from '@/views/LogoBar.vue';
+import axios from "axios";
+import LogoBar from "@/components/LogoBar.vue";
+
 export default {
-  name: 'App',
-  data: () => ({}),
+  name: "App",
   components: {
-    CarCards,
-    LogoBar,
+    LogoBar
   },
+  methods: {
+    async getCars() {
+      const cars = await axios({ method: "GET", url: "http://127.0.0.1:3000/cars" });
+
+      this.cardata = cars.data;
+    }
+  },
+  created() {
+    this.getCars();
+  },
+
+  data: () => ({
+    cardata: []
+  })
 };
 </script>
