@@ -8,17 +8,16 @@
       >
       <br />
       Owner:
-      <span class="font-weight-bold"
-        >{{ cardata.owner.firstName }} {{ cardata.owner.lastName }}</span
-      >
+      <span class="font-weight-bold">{{ cardata.owner }} </span>
       <br />
-      Year: <span class="font-weight-bold">{{ cardata.yearOfMake }}</span>
+      Year: <span class="font-weight-bold">{{ cardata.year_of_make }}</span>
       <br />
       Miles: <span class="font-weight-bold">{{ cardata.miles }} </span>
       <br />
       Price:
       <span class="font-weight-bold" v-if="cardata.status != 'sold'"> {{ cardata.price }} </span>
       <span v-if="cardata.status == 'sold'" class="font-weight-bold">n/a</span>
+
       <br />
 
       <v-btn
